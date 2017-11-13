@@ -5,7 +5,7 @@ require 'json'
 module Marketcloud
 	class Product < Request
 
-		attr_accessor :meta, :facebook, :weight, :height, :width, :depth, :has_variants, :variants
+		attr_accessor :meta, :facebook, :weight, :height, :width, :depth, :has_variants, :variants, :description
 
 		def initialize(attributes)
 			super
