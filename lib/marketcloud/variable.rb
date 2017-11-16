@@ -24,7 +24,7 @@ module Marketcloud
 				page: page,
 			}
 
-			variables = perform_request(api_url(self.plural, query))
+			variables = perform_request(api_url(self.plural, query)), :get, nil, true
 
 			if variables
 				variables['data'].map { |p| new(p) }
