@@ -45,25 +45,5 @@ module Marketcloud
 				nil
 			end
 		end
-
-		# returns how many published products and how many pages there are
-		# @param per_page [Integer] how many products per page
-		# @param q [String] a query string to filter results
-		# @return [count, pages]
-		def self.count_and_pages(q: nil, per_page: 20)
-			query = {
-				per_page: per_page
-			}
-
-			query[:q] = q unless q.nil?
-
-			products = perform_request(api_url("products", query), :get, nil, false)
-
-			if products
-				[products["count"], products["pages"]]
-			else
-				nil
-			end
-		end
 	end
 end
