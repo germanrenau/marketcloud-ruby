@@ -3,7 +3,7 @@ require 'faraday'
 require 'json'
 
 module Marketcloud
-	class Product < Request
+	class Tax < Request
 
         def initialize(attributes)
 			super
