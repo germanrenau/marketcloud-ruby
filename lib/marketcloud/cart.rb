@@ -75,10 +75,11 @@ module Marketcloud
 		# Removes items from a cart (modifies the caller!)
 		# @param product_ids [Array] the products to be removed
 		# @return a new cart
-		def remove!(product_ids)
+		def remove!(items)
 			cart = Cart.perform_request Cart.api_url("carts/#{self.id}", {}), :patch,
-				{ op: "remove",
-					items: product_ids }, true
+			{ op: "remove",
+				items: items.map { |item| { product_id: item[:product_id], variant_id: item[:variant_id] }
+			}}, true
 
 			if cart
 				self.items = cart["data"]["items"]
