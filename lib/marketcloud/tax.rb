@@ -24,6 +24,25 @@ module Marketcloud
 			else
 				nil
 			end
-        end
+		end
+		
+
+		# Return all the taxes
+		# @param published [Boolean] whether query only for published products, defaults to true
+		# @return an array of Taxes
+		def self.all(page: 1, per_page: 20)
+			query = {
+				per_page: per_page,
+				page: page,
+			}
+
+			contents = perform_request(api_url("taxes",query), :get, nil, false)
+
+			if contents
+				contents['data'].map { |p| new(p) }
+			else
+				nil
+			end
+		end
     end
 end
