@@ -18,13 +18,9 @@ module Marketcloud
 		# Return all the contents
 		# @param published [Boolean] whether query only for published products, defaults to true
 		# @return an array of Products
-		def self.all(page: 1, per_page: 20)
-			query = {
-				per_page: per_page,
-				page: page,
-			}
+		def self.all
 
-			variables = perform_request(api_url(self.plural, query)), :get, nil, true
+			variables = perform_request(api_url(self.plural))
 
 			if variables
 				variables['data'].map { |p| new(p) }
