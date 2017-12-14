@@ -34,14 +34,15 @@ module Marketcloud
 		# @param billing_address_id [Integer] the billing address
 		# @param shipping_id [Integer] the shipping ID
 		# @return the newly created order
-		def self.create(user_id, cart_id, shipping_address_id, billing_address_id, shipping_id, promotion_id = nil, coupon_code = nil)
+		def self.create(user_id, cart_id, shipping_address_id, billing_address_id, shipping_id, promotion_id = nil, coupon_code = nil, payment_method_id = nil)
 
 			fields = {
 				user_id: user_id,
 				cart_id: cart_id,
 				shipping_address_id: shipping_address_id,
 				billing_address_id: billing_address_id,
-				shipping_id: shipping_id
+				shipping_id: shipping_id,
+				payment_method_id: payment_method_id
 			}
 
 			if promotion_id; fields[:promotion_id] = promotion_id end
