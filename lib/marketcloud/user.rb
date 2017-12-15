@@ -35,8 +35,8 @@ module Marketcloud
 		# @param email [Integer] the user email
 		# @param password [Integer] the user password
 		# @return the newly created user
-		def self.create(name, email, password)
-			user = perform_request api_url("users", {}), :post, { email: email, name: name, password: password }, true
+		def self.create(name, email, password, locale)
+			user = perform_request api_url("users", {}), :post, { email: email, name: name, password: password, locale: locale }, true
 
 			if user
 				new user['data']
